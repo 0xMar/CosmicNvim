@@ -8,7 +8,7 @@ cmd([[
 	autocmd BufWritePre * :%s/\s\+$//e
 ]])
 
-g.mapleader = ' '
+g.mapleader = ','
 
 -- misc
 opt.syntax = 'enable'
