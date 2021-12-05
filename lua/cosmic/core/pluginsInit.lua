@@ -46,7 +46,7 @@ return packer.startup(function()
 
   -- theme stuff
   use({ -- statusline
-    'NTBBloodbath/galaxyline.nvim',
+    'CosmicNvim/galaxyline.nvim',
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
@@ -80,22 +80,38 @@ return packer.startup(function()
       require('cosmic.lsp')
     end,
     requires = {
-      {
-        'ray-x/lsp_signature.nvim',
-        config = function()
-          -- must happen after servers are set up
-          require('lsp_signature').setup({
-            bind = true, -- This is mandatory, otherwise border config won't get registered.
-            handler_opts = {
-              border = 'rounded',
-            },
-          })
-        end,
-        after = 'nvim-lspconfig',
-      },
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       { 'williamboman/nvim-lsp-installer' },
     },
+  })
+
+  use({
+    'CosmicNvim/cosmic-ui',
+    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'ray-x/lsp_signature.nvim' },
+    config = function()
+      local diagnostic = {}
+      local hover = {}
+      local signature_help = {}
+      local icons = require('cosmic.theme.icons')
+
+      if config and config.lsp and config.lsp.diagnostic then
+        diagnostic = config.lsp.diagnostic
+      end
+      if config and config.lsp and config.lsp.hover then
+        hover = config.lsp.hover
+      end
+      if config and config.lsp and config.lsp.signature_help then
+        signature_help = config.lsp.signature_help
+      end
+
+      require('cosmic-ui').setup({
+        icons = icons,
+        diagnostic = diagnostic,
+        hover = hover,
+        signature_help = signature_help,
+      })
+    end,
+    after = 'nvim-lspconfig',
   })
 
   use({
