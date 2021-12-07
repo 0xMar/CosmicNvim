@@ -86,25 +86,41 @@ return packer.startup(function()
   })
 
   use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('cosmic.lsp.providers.null_ls')
+    end,
+    requires = { 'nvim-lua/plenary.nvim' },
+    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
+    after = 'nvim-lspconfig',
+  })
+
+  use({
     'CosmicNvim/cosmic-ui',
-    requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'ray-x/lsp_signature.nvim' },
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'ray-x/lsp_signature.nvim',
+    },
     config = function()
       local diagnostic = {}
       local hover = {}
       local signature_help = {}
+      local user_config = require('cosmic.config')
       local icons = require('cosmic.theme.icons')
 
-      if config and config.lsp and config.lsp.diagnostic then
-        diagnostic = config.lsp.diagnostic
+      if user_config and user_config.lsp and user_config.lsp.diagnostic then
+        diagnostic = user_config.lsp.diagnostic
       end
-      if config and config.lsp and config.lsp.hover then
-        hover = config.lsp.hover
+      if user_config and user_config.lsp and user_config.lsp.hover then
+        hover = user_config.lsp.hover
       end
-      if config and config.lsp and config.lsp.signature_help then
-        signature_help = config.lsp.signature_help
+      if user_config and user_config.lsp and user_config.lsp.signature_help then
+        signature_help = user_config.lsp.signature_help
       end
 
       require('cosmic-ui').setup({
+        border = 'rounded',
         icons = icons,
         diagnostic = diagnostic,
         hover = hover,
@@ -114,53 +130,37 @@ return packer.startup(function()
     after = 'nvim-lspconfig',
   })
 
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('cosmic.lsp.providers.null_ls')
-    end,
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    disable = vim.tbl_contains(user_plugins.disable, 'null-ls'),
-  })
-
-  use({
-    'onsails/lspkind-nvim',
-    event = 'InsertEnter',
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
-  })
-
   -- autocompletion
   use({
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cosmic.lsp.autocomplete').init()
+      require('cosmic-ui').setup_autocomplete()
     end,
     requires = {
+      { 'onsails/lspkind-nvim' },
+      {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require('cosmic.modules.snippets')
+        end,
+        requires = {
+          'rafamadriz/friendly-snippets',
+        },
+      },
       { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer', after = 'cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'cmp-buffer' },
-      { 'hrsh7th/cmp-path', after = 'cmp-nvim-lua' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       {
         'windwp/nvim-autopairs',
         config = function()
-          require('cosmic.lsp.autocomplete').autopairs()
+          require('cosmic.modules.auto-pairs')
         end,
         after = 'cmp-path',
       },
     },
-    after = 'lspkind-nvim',
-    disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
-  })
-
-  use({
-    'L3MON4D3/LuaSnip',
-    config = function()
-      require('cosmic.modules.snippets')
-    end,
-    requires = {
-      'rafamadriz/friendly-snippets',
-    },
+    event = 'InsertEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'autocomplete'),
   })
 
