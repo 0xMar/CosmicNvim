@@ -38,7 +38,7 @@ return packer.startup(function()
   use({
     'rcarriga/nvim-notify',
     config = function()
-      require('cosmic.modules.notify')
+      require('cosmic.plugins.notify')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'notify'),
@@ -50,7 +50,7 @@ return packer.startup(function()
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
-      require('cosmic.modules.statusline')
+      require('cosmic.plugins.galaxyline')
     end,
     after = config.theme,
     disable = vim.tbl_contains(user_plugins.disable, 'statusline'),
@@ -60,7 +60,7 @@ return packer.startup(function()
   use({
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require('cosmic.modules.nvim-tree')
+      require('cosmic.plugins.nvim-tree')
     end,
     opt = true,
     cmd = {
@@ -103,29 +103,7 @@ return packer.startup(function()
       'ray-x/lsp_signature.nvim',
     },
     config = function()
-      local diagnostic = {}
-      local hover = {}
-      local signature_help = {}
-      local user_config = require('cosmic.config')
-      local icons = require('cosmic.theme.icons')
-
-      if user_config and user_config.lsp and user_config.lsp.diagnostic then
-        diagnostic = user_config.lsp.diagnostic
-      end
-      if user_config and user_config.lsp and user_config.lsp.hover then
-        hover = user_config.lsp.hover
-      end
-      if user_config and user_config.lsp and user_config.lsp.signature_help then
-        signature_help = user_config.lsp.signature_help
-      end
-
-      require('cosmic-ui').setup({
-        border = 'rounded',
-        icons = icons,
-        diagnostic = diagnostic,
-        hover = hover,
-        signature_help = signature_help,
-      })
+      require('cosmic.plugins.cosmic-ui')
     end,
     after = 'nvim-lspconfig',
   })
@@ -141,7 +119,7 @@ return packer.startup(function()
       {
         'L3MON4D3/LuaSnip',
         config = function()
-          require('cosmic.modules.snippets')
+          require('cosmic.plugins.luasnip')
         end,
         requires = {
           'rafamadriz/friendly-snippets',
@@ -155,9 +133,9 @@ return packer.startup(function()
       {
         'windwp/nvim-autopairs',
         config = function()
-          require('cosmic.modules.auto-pairs')
+          require('cosmic.plugins.auto-pairs')
         end,
-        after = 'cmp-path',
+        after = 'nvim-cmp',
       },
     },
     event = 'InsertEnter',
@@ -190,7 +168,7 @@ return packer.startup(function()
     opt = true,
     cmd = { 'FloatermToggle', 'FloatermNew', 'FloatermSend' },
     config = function()
-      require('cosmic.modules.terminal')
+      require('cosmic.plugins.terminal')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'terminal'),
   })
@@ -207,7 +185,7 @@ return packer.startup(function()
       },
     },
     config = function()
-      require('cosmic.modules.telescope')
+      require('cosmic.plugins.telescope')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'telescope'),
@@ -217,7 +195,7 @@ return packer.startup(function()
   use({
     'glepnir/dashboard-nvim',
     config = function()
-      require('cosmic.modules.dashboard')
+      require('cosmic.plugins.dashboard')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'dashboard'),
   })
@@ -225,7 +203,7 @@ return packer.startup(function()
   use({
     'rmagatti/auto-session',
     config = function()
-      require('cosmic.modules.session')
+      require('cosmic.plugins.auto-session')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'auto-session'),
   })
@@ -240,7 +218,7 @@ return packer.startup(function()
     },
     run = ':TSUpdate',
     config = function()
-      require('cosmic.modules.treesitter')
+      require('cosmic.plugins.treesitter')
     end,
     disable = vim.tbl_contains(user_plugins.disable, 'treesitter'),
   })
@@ -257,7 +235,7 @@ return packer.startup(function()
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('cosmic.modules.todo-comments')
+      require('cosmic.plugins.todo-comments')
     end,
     event = 'BufWinEnter',
     disable = vim.tbl_contains(user_plugins.disable, 'todo-comments'),
