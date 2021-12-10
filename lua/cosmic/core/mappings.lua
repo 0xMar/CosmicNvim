@@ -11,3 +11,6 @@ require('cosmic.plugins.telescope.mappings').init()
 require('cosmic.plugins.nvim-tree.mappings')
 require('cosmic.plugins.terminal.mappings')
 require('cosmic.lsp.mappings')
+
+-- Custom mappings
+map('n', 'S', ':%s//g<Left><Left>')
