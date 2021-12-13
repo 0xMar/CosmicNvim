@@ -30,18 +30,18 @@ Full featured native LSP functionality!
 ##### Additional features
 
 - Aesthetically pleasing UI via [Cosmic-UI](https://github.com/CosmicNvim/cosmic-ui)
-- Amazing default theme thanks to [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-- Enhanced syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Amazing default theme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+- Enhanced syntax highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Dashboard via [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
-- Hand-built statusline with [galaxyline](https://github.com/CosmicNvim/galaxyline.nvim)
-- Explore files with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
-- Fuzzy finder and some LSP actions with [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- Hand-built statusline via [galaxyline](https://github.com/CosmicNvim/galaxyline.nvim)
+- Explore files via [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
+- Fuzzy finder via [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - Floating terminal with [vim-floaterm](https://github.com/voldikss/vim-floaterm)
-- Auto LSP installation with [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
-- Autocompletion provided by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- Additional TypeScript support with [nvim-lsp-ts-utils](https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
+- Auto LSP installation via [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
+- Autocompletion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- Additional TypeScript support via [nvim-lsp-ts-utils](https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils)
 - Snippet support via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- Session management with [auto-session](https://github.com/rmagatti/auto-session)
+- Session management via [auto-session](https://github.com/rmagatti/auto-session)
 - Notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - Additional custom highlighting
 - Floating windows for references, renaming, diagnostics, code actions and more!
@@ -154,11 +154,15 @@ Useful for non-plugin related changes such as editor settings or mappings.
 
 ### Rename
 
-<img width="859" alt="rename" src="https://user-images.githubusercontent.com/3721204/140592783-c9875634-805e-45f4-8547-6dcb5b5c7404.png">
+<img width="498" alt="Screen Shot 2021-12-10 at 4 22 28 PM" src="https://user-images.githubusercontent.com/3721204/145656501-e1aec4be-c8bc-4e59-8c2f-2d99d50bbea2.png">
 
 ### Rename change notification
 
 <img width="1792" alt="rename notification" src="https://user-images.githubusercontent.com/3721204/140592788-27c0f02a-e31b-4af7-8f0c-a49a988e295e.png">
+
+### Code Actions
+
+<img width="613" alt="Screen Shot 2021-12-10 at 3 37 38 PM" src="https://user-images.githubusercontent.com/3721204/145654798-84c88a69-414e-457b-b595-e76b767ea5d3.png">
 
 ### Hover
 
