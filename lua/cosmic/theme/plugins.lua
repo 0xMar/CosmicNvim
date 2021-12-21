@@ -26,7 +26,6 @@ function M.init(use, config)
 
   use({
     'catppuccin/nvim',
-    branch = 'dev-rc',
     as = 'catppuccin',
     config = function()
       local catppuccin = require('catppuccin')
@@ -108,7 +107,8 @@ function M.init(use, config)
     'wuelnerdotexe/vim-enfocado',
     as = 'enfocado',
     config = function()
-      vim.cmd('color enfocado')
+      vim.g.enfocado_style = 'nature'
+      vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
     disable = config.theme ~= 'enfocado',
   })

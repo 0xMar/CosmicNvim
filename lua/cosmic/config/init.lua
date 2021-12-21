@@ -7,6 +7,7 @@ end
 
 -- these settings will be merged with any settings definined in config.lua
 local default_config = {
+  border = 'rounded',
   theme = 'tokyonight',
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
@@ -22,6 +23,9 @@ local default_config = {
         opts = {}
       }, ]]
 
+      jsonls = {
+        format = false,
+      },
       sumneko_lua = {
         format = false, -- disable formatting all together
       },
