@@ -4,7 +4,9 @@ M.supported_themes = {
   'catppuccin',
   'dracula',
   'enfocado',
+  'github',
   'gruvbox',
+  'kanagawa',
   'nightfox',
   'nord',
   'onedark',
@@ -30,6 +32,13 @@ function M.init(use, config)
     config = function()
       local catppuccin = require('catppuccin')
       catppuccin.setup({
+        styles = {
+          comments = 'NONE',
+          functions = 'NONE',
+          keywords = 'NONE',
+          strings = 'NONE',
+          variables = 'NONE',
+        },
         integrations = {
           gitsigns = true,
           telescope = true,
@@ -61,7 +70,7 @@ function M.init(use, config)
     requires = { 'rktjmp/lush.nvim' },
     config = function()
       vim.o.background = 'dark'
-      vim.cmd('color gruvbox')
+      vim.cmd('colorscheme gruvbox')
     end,
     disable = config.theme ~= 'gruvbox',
   })
@@ -108,9 +117,41 @@ function M.init(use, config)
     as = 'enfocado',
     config = function()
       vim.g.enfocado_style = 'nature'
+      vim.g.enfocado_plugins = {
+        'cmp',
+        'dashboard',
+        'floaterm',
+        'gitsigns',
+        'lsp',
+        'lsp-installer',
+        'notify',
+        'packer',
+        'telescope',
+        'todo-comments',
+        'tree',
+        'treesitter',
+      }
       vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
     disable = config.theme ~= 'enfocado',
+  })
+
+  use({
+    'rebelot/kanagawa.nvim',
+    as = 'kanagawa',
+    config = function()
+      vim.cmd('colorscheme kanagawa')
+    end,
+    disable = config.theme ~= 'kanagawa',
+  })
+
+  use({
+    'projekt0n/github-nvim-theme',
+    as = 'github',
+    config = function()
+      require('github-theme').setup()
+    end,
+    disable = config.theme ~= 'github',
   })
 end
 

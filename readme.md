@@ -80,7 +80,9 @@ CosmicNvim comes with first-class support for the following themes:
 - [Catppuccino](https://github.com/Pocco81/Catppuccino.nvim)
 - [Dracula](https://github.com/Mofiqul/dracula.nvim)
 - [Enfocado](https://github.com/wuelnerdotexe/vim-enfocado)
+- [Github](https://github.com/projekt0n/github-nvim-theme)
 - [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim)
+- [Kanagawa](https://github.com/rebelot/kanagawa.nvim)
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim)
 - [Nord](https://github.com/shaunsingh/nord.nvim)
 - [Onedark](https://github.com/navarasu/onedark.nvim)
@@ -94,10 +96,6 @@ CosmicNvim comes with first-class support for the following themes:
 [General Info](./lua/cosmic/config/examples/readme.md)
 
 [Cosmic configurations](./lua/cosmic/config/examples/config.lua)
-
-[Plugin configurations](./lua/cosmic/config/examples/plugins.lua)
-
-[Add additional mappings](./lua/cosmic/config/examples/mappings.lua)
 
 [Add additional vim options](./lua/cosmic/config/examples/editor.lua)
 
