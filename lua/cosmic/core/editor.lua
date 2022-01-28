@@ -1,14 +1,14 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
-local indent = 4
+local indent = 2
 
 cmd([[
 	filetype plugin indent on
 	autocmd BufWritePre * :%s/\s\+$//e
 ]])
 
-g.mapleader = ','
+g.mapleader = ' '
 
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
@@ -67,7 +67,7 @@ opt.shortmess = opt.shortmess + { c = true }
 
 -- perfomance
 opt.redrawtime = 1500
-opt.timeoutlen = 250
+opt.timeoutlen = 1000
 opt.ttimeoutlen = 10
 opt.updatetime = 100
 
