@@ -35,4 +35,12 @@ map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 -- Custom mappings
+
+-- Search and replace
 map('n', 'S', ':%s//g<Left><Left>')
+
+-- Window navigation
+map('n', '<leader>h', ':wincmd h<cr>')
+map('n', '<leader>j', ':wincmd j<cr>')
+map('n', '<leader>k', ':wincmd k<cr>')
+map('n', '<leader>l', ':wincmd l<cr>')
