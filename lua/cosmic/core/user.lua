@@ -1,11 +1,10 @@
--- DO NOT TOUCH :)
+-- DEFAULT USER SETTINGS
 local ok, user_config = pcall(require, 'cosmic.config.config')
 
 if not ok then
   user_config = {}
 end
 
--- these settings will be merged with any settings definined in config.lua
 local default_config = {
   border = 'rounded',
   disable_builtin_plugins = {},
@@ -14,33 +13,24 @@ local default_config = {
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,
-    -- vim.diagnostic.config settiings
     servers = {
-      -- enable/disable server + formatting
-      -- enable non-default servers
-      -- rust_analyzer = true,
-
-      -- or override lsp server options
-      --[[ rust_analyzer = {
-        opts = {}
-      }, ]]
-
       jsonls = {
         format = false,
       },
+      pyright = true,
       sumneko_lua = {
-        format = false, -- disable formatting all together
+        format = false,
       },
       html = true,
       tsserver = {
-        format = false, -- disable formatting all together
+        format = false,
       },
     },
   },
 }
 
-local utils = require('cosmic.utils')
-local config = utils.merge(default_config, user_config)
+local u = require('cosmic.utils')
+local config = u.merge(default_config, user_config)
 local user_servers = vim.tbl_keys(config.lsp.servers)
 
 function config.lsp.can_client_format(client_name)
