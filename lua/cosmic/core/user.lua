@@ -2,7 +2,14 @@
 local ok, user_config = pcall(require, 'cosmic.config.config')
 
 if not ok then
-  user_config = {}
+  user_config = {
+    add_plugins = {
+      {
+        'dsznajder/vscode-es7-javascript-react-snippets',
+        run = 'yarn install --frozen-lockfile && yarn compile',
+      },
+    },
+  }
 end
 
 local default_config = {
