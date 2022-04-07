@@ -8,6 +8,9 @@ if not ok then
         'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile',
       },
+      {
+        'tpope/vim-surround',
+      },
     },
   }
 end
@@ -18,7 +21,7 @@ local default_config = {
   add_plugins = {},
   theme = 'tokyonight',
   lsp = {
-    format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
+    format_on_save = false, -- true/false or table of filetypes {'.ts', '.js',}
     rename_notification = true,
     servers = {
       jsonls = {
@@ -31,6 +34,9 @@ local default_config = {
       html = true,
       tsserver = {
         format = false,
+      },
+      null_ls = {
+        debug = false,
       },
     },
   },
