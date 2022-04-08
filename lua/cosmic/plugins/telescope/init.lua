@@ -106,7 +106,7 @@ require('telescope').setup(u.merge({
       prompt_title = 'Definitions',
       mappings = default_mappings,
     }),
-    lsp_references = u.merge(opts_vertical, {
+    lsp_references = u.merge(opts_cursor, {
       prompt_title = 'References',
       mappings = default_mappings,
     }),
