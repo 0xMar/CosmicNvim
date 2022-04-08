@@ -10,7 +10,7 @@ function M.on_attach(client, bufnr)
 
   -- defaults
   ts_utils.setup(u.merge({
-    debug = false,
+    debug = true,
     disable_commands = false,
     enable_import_on_completion = true,
 

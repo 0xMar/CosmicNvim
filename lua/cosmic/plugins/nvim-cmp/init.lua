@@ -40,7 +40,7 @@ local default_cmp_opts = {
       end
     end, {
       'i',
-      's',
+      'c',
     }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -52,7 +52,7 @@ local default_cmp_opts = {
       end
     end, {
       'i',
-      's',
+      'c',
     }),
   },
   documentation = {

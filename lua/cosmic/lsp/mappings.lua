@@ -15,7 +15,7 @@ function M.init(client, bufnr)
   -- diagnostics
   buf_map(bufnr, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
   buf_map(bufnr, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-  buf_map(bufnr, 'n', 'ge', '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>')
+  buf_map(bufnr, 'n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>')
   buf_map(bufnr, 'n', '<leader>ge', '<cmd>Telescope diagnostics bufnr=0<cr>')
 
   -- hover
