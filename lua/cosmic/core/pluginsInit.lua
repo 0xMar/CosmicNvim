@@ -239,10 +239,6 @@ return packer.startup(function()
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'colorizer'),
   })
-  -- Syntax files for Solidity
-  use({
-    'LunarVim/vim-solidity',
-  })
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do

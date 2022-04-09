@@ -16,6 +16,8 @@ local default_cmp_opts = {
     end,
   },
   mapping = {
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -40,7 +42,7 @@ local default_cmp_opts = {
       end
     end, {
       'i',
-      'c',
+      's',
     }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -52,7 +54,7 @@ local default_cmp_opts = {
       end
     end, {
       'i',
-      'c',
+      's',
     }),
   },
   documentation = {
@@ -68,6 +70,7 @@ local default_cmp_opts = {
     { name = 'buffer' },
     { name = 'luasnip' },
     { name = 'path' },
+    { name = 'cmdline' },
   }),
   formatting = {
     format = function(entry, vim_item)
@@ -79,6 +82,7 @@ local default_cmp_opts = {
         buffer = '[buf]',
         path = '[path]',
         nvim_lua = '[nvim_api]',
+        cmdline = '[cmdline]',
       })[entry.source.name]
       return vim_item
     end,
@@ -89,7 +93,7 @@ local augroup_name = 'CosmicNvimAutocomplete'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
-    require('cmp').setup.buffer({ enabled = false })
+    require('cmp').setup.buffer({ enabled = true })
   end,
   group = group,
 })
@@ -111,10 +115,10 @@ cmp.setup.filetype('gitcommit', {
   }),
 })
 
--- cmp.setup.cmdline(':', {
---   sources = cmp.config.sources({
---     { name = 'path' },
---   }, {
---     { name = 'cmdline' },
---   }),
--- })
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline' },
+  }),
+})
