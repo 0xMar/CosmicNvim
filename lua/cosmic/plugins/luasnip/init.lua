@@ -17,6 +17,12 @@ ls.config.set_config(u.merge({
   -- Update more often, :h events for more info.
   updateevents = 'TextChanged,TextChangedI',
   enable_autosnippets = true,
+  delete_check_event = 'TextChanged',
+  -- treesitter-hl has 100, use something higher (default is 200).
+  ext_base_prio = 300,
+  -- minimal increase in priority.
+  ext_prio_increase = 1,
+  store_selection_keys = '<Tab>',
 }, config.luasnip or {}))
 
 ls.snippets = {
