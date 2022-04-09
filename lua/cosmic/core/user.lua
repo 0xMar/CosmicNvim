@@ -5,10 +5,6 @@ if not ok then
   user_config = {
     add_plugins = {
       {
-        'dsznajder/vscode-es7-javascript-react-snippets',
-        run = 'yarn install --frozen-lockfile && yarn compile',
-      },
-      {
         'tpope/vim-surround',
       },
     },

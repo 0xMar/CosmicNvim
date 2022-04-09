@@ -107,6 +107,10 @@ return packer.startup(function()
         end,
         requires = {
           'rafamadriz/friendly-snippets',
+          {
+            'dsznajder/vscode-es7-javascript-react-snippets',
+            run = 'yarn install --frozen-lockfile && yarn compile',
+          },
         },
       },
       { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
