@@ -21,7 +21,7 @@ if not config_opts.default_cosmic_sources then
     null_ls.builtins.formatting.prettierd.with({
       env = {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('~/.config/prettierd/.prettierrc.json'),
+        -- PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('~/.config/prettierd/.prettierrc.json'),
       },
     }),
     null_ls.builtins.formatting.stylua,
