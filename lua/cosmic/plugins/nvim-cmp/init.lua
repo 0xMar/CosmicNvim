@@ -15,19 +15,13 @@ local default_cmp_opts = {
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = {
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     -- disabled for autopairs mapping
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
     ['<Tab>'] = cmp.mapping(function(fallback)
@@ -56,13 +50,16 @@ local default_cmp_opts = {
       'i',
       's',
     }),
-  },
-  documentation = {
-    border = user_config.border,
-    winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
-  },
-  experimental = {
-    ghost_text = true,
+    -- documentation = {
+    --   border = user_config.border,
+    --   winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+    -- },
+    -- experimental = {
+    --   ghost_text = true,
+    -- },
+  }),
+  view = {
+    entries = 'native',
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -101,6 +98,7 @@ vim.api.nvim_create_autocmd('FileType', {
 cmp.setup(u.merge(default_cmp_opts, user_config.nvim_cmp or {}))
 
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
   },
@@ -116,6 +114,7 @@ cmp.setup.filetype('gitcommit', {
 })
 
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' },
   }, {
