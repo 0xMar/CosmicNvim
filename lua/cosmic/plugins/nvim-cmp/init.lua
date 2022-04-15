@@ -50,16 +50,15 @@ local default_cmp_opts = {
       'i',
       's',
     }),
-    -- documentation = {
-    --   border = user_config.border,
-    --   winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
-    -- },
-    -- experimental = {
-    --   ghost_text = true,
-    -- },
   }),
-  view = {
-    entries = 'native',
+  experimental = {
+    ghost_text = true,
+  },
+  window = {
+    documentation = {
+      border = user_config.border,
+      winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+    },
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
