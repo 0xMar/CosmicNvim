@@ -10,6 +10,16 @@ local has_words_before = function()
 end
 
 local default_cmp_opts = {
+  enabled = function()
+    -- disable completion in comments
+    local context = require('cmp.config.context')
+    -- keep command mode completion enabled when cursor is in a comment
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
+    end
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -89,7 +99,7 @@ local augroup_name = 'CosmicNvimAutocomplete'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
-    require('cmp').setup.buffer({ enabled = true })
+    require('cmp').setup.buffer({ enabled = false })
   end,
   group = group,
 })
