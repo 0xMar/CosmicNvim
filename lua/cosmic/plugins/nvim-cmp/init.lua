@@ -26,10 +26,13 @@ local default_cmp_opts = {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-u>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
     -- disabled for autopairs mapping
     ['<CR>'] = cmp.mapping.confirm({
       select = true,
@@ -61,14 +64,14 @@ local default_cmp_opts = {
       's',
     }),
   }),
-  experimental = {
-    ghost_text = true,
-  },
   window = {
     documentation = {
       border = user_config.border,
       winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
     },
+  },
+  experimental = {
+    ghost_text = true,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
