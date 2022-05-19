@@ -102,7 +102,7 @@ local augroup_name = 'CosmicNvimAutocomplete'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
-    require('cmp').setup.buffer({ enabled = false })
+    require('cmp').setup.buffer({ enabled = true })
   end,
   group = group,
 })
