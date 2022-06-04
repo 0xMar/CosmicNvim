@@ -76,8 +76,8 @@ local default_cmp_opts = {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'buffer' },
     { name = 'luasnip' },
+    { name = 'buffer' },
     { name = 'path' },
     { name = 'cmdline' },
   }),
@@ -98,15 +98,6 @@ local default_cmp_opts = {
   },
 }
 
-local augroup_name = 'CosmicNvimAutocomplete'
-local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
-vim.api.nvim_create_autocmd('FileType TelescopePrompt', {
-  callback = function()
-    require('cmp').setup.buffer({ enabled = false })
-  end,
-  group = group,
-})
-
 cmp.setup(u.merge(default_cmp_opts, user_config.nvim_cmp or {}))
 
 cmp.setup.cmdline('/', {
@@ -125,11 +116,15 @@ cmp.setup.filetype('gitcommit', {
   }),
 })
 
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' },
-  }, {
-    { name = 'cmdline' },
-  }),
+cmp.setup.filetype('TelescopePrompt', {
+  enabled = false,
 })
+
+-- cmp.setup.cmdline(':', {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = cmp.config.sources({
+--     { name = 'path' },
+--   }, {
+--     { name = 'cmdline' },
+--   }),
+-- })
