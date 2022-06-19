@@ -7,6 +7,7 @@ M.supported_themes = {
   'github',
   'gruvbox',
   'kanagawa',
+  'monokai',
   'nightfox',
   'nord',
   'onedark',
@@ -23,6 +24,7 @@ function M.init(use, config)
       vim.g.tokyonight_sidebars = { 'qf' }
       vim.cmd('color tokyonight')
     end,
+    commit = '8223c970677e4d88c9b6b6d81bda23daf11062bb',
     disable = config.theme ~= 'tokyonight',
   })
 
@@ -50,6 +52,7 @@ function M.init(use, config)
       })
       vim.cmd('colorscheme catppuccin')
     end,
+    commit = 'b66d9a335e2562ca2c4758c12e384a9e7491ff29',
     disable = config.theme ~= 'catppuccin',
   })
 
@@ -61,6 +64,7 @@ function M.init(use, config)
       vim.g.nord_borders = true
       require('nord').set()
     end,
+    commit = 'db98740c9429232508a25a98b7d41705f4d2fc1c',
     disable = config.theme ~= 'nord',
   })
 
@@ -72,6 +76,7 @@ function M.init(use, config)
       vim.o.background = 'dark'
       vim.cmd('colorscheme gruvbox')
     end,
+    commit = '8135da3a90b257a2c902614e71d9cbbef8308cad',
     disable = config.theme ~= 'gruvbox',
   })
 
@@ -82,6 +87,7 @@ function M.init(use, config)
       vim.g.rose_pine_variant = 'moon'
       vim.cmd('colorscheme rose-pine')
     end,
+    commit = '3f0a6c06da29c7b0f3fa49a313ae4d56f0dc58b8',
     disable = config.theme ~= 'rose-pine',
   })
 
@@ -91,6 +97,7 @@ function M.init(use, config)
     config = function()
       vim.cmd('color nightfox')
     end,
+    commit = 'b85c5c3a0e3b309ffa7d0a6ca33e430c91532ba0',
     disable = config.theme ~= 'nightfox',
   })
 
@@ -100,6 +107,7 @@ function M.init(use, config)
     config = function()
       vim.cmd('color onedark')
     end,
+    commit = '52b1ebd80831dd1232b396b82a77fba977fb6e2c',
     disable = config.theme ~= 'onedark',
   })
 
@@ -109,6 +117,7 @@ function M.init(use, config)
     config = function()
       vim.cmd('color dracula')
     end,
+    commit = 'a219971291c56bcca3827cb7bd40aaaef23feeca',
     disable = config.theme ~= 'dracula',
   })
 
@@ -133,6 +142,7 @@ function M.init(use, config)
       }
       vim.cmd('autocmd VimEnter * ++nested colorscheme enfocado')
     end,
+    commit = 'd7faf362f3573b1219c76b3a6ec22da4e568131e',
     disable = config.theme ~= 'enfocado',
   })
 
@@ -142,6 +152,7 @@ function M.init(use, config)
     config = function()
       vim.cmd('colorscheme kanagawa')
     end,
+    commit = '76df2251e813fdec244b2b593be62accea930119',
     disable = config.theme ~= 'kanagawa',
   })
 
@@ -151,7 +162,18 @@ function M.init(use, config)
     config = function()
       require('github-theme').setup()
     end,
+    commit = '1cc4a8d508bc6b846c72b9e629e8188ac24d0f13',
     disable = config.theme ~= 'github',
+  })
+
+  use({
+    'tanvirtin/monokai.nvim',
+    as = 'monokai',
+    config = function()
+      require('monokai').setup()
+    end,
+    disable = config.theme ~= 'monokai',
+    commit = 'bff619d7a911cd8d8dcb5168db9ee6dfcc344934',
   })
 end
 
